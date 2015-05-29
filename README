@@ -1,0 +1,23 @@
+The SolarCalucuator.swift was created by Dr. Jeff Craighead and has been tested on iOS 8.3.
+
+This code is based on the NREL Technical Report "Solar Position Algorithm for Solar Radiation Applications" which provides C source for the calculations.
+NREL/TP-560-34302 - November 2005 revision
+http://www.nrel.gov/docs/fy08osti/34302.pdf
+
+I made some modifications to eliminate the use of the SPA struct and often return a tuple for methods that would modify the contents of that struct.
+You really don't need to worry about any of that, there are only a handful of important methods you need to use this library. They are:
+
+-spa_calculate:
+	calculates all the various solar output parameters described in the NREL report based on the latitude, longitude, time, date, altitude, and optionally temperature and air pressure you set.
+
+-get_sunrise_tuple:
+	returns a tuple with Hour, Minute, and Second that indicates the sunrise time for the day used when spa_calculate was run
+
+-get_sunset_tuple:
+	returns a tuple with Hour, Minute, and Second that indicates the sunset time for the day used when spa_calculate was run
+
+-get_suntransit_tuple
+	returns a tuple with Hour, Minute, and Second that indicates the sun transit (solar noon) time for the day used when spa_calculate was run
+
+-showRTSAlertView:
+	on iOS displays an AlertView with the next sunrise, sunset, and sun transit for the based on the parameters you provide (latitude, longitude, altitude)	
